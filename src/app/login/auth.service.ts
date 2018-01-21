@@ -17,6 +17,7 @@ export class AuthService {
     if(user.name === 'rodolfo@gmail.com' && user.password === '123456'){
       
       this.userAuth = true;
+      localStorage.setItem('userAuth', 'true');
 
       //this.showMenuEmitter.emit(true);
 
@@ -25,6 +26,7 @@ export class AuthService {
     }else{
 
       this.userAuth = false;
+      localStorage.setItem('userAuth', 'false');
 
       //this.showMenuEmitter.emit(false);
 
@@ -37,5 +39,7 @@ export class AuthService {
   authenticatedUser(){
     return this.userAuth;
   }
+
+  
 
 }
