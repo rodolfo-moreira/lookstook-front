@@ -14,6 +14,8 @@ import { HomeComponent } from './home/home.component';
 import { rounting } from './app.rounting';
 import { AuthService } from './login/auth.service';
 import { FormsModule } from '@angular/forms';
+import { AuthGuard } from './guards/auth.guard';
+import { ProductsComponent } from './products/products.component';
 
 
 @NgModule({
@@ -25,14 +27,15 @@ import { FormsModule } from '@angular/forms';
     ForgotComponent,
     RegisterComponent,
     RegisterProductComponent,
-    HomeComponent
+    HomeComponent,
+    ProductsComponent
   ],
   imports: [
     FormsModule,
     BrowserModule,
     rounting
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

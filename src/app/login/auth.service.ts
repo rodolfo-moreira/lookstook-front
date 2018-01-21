@@ -34,4 +34,8 @@ export class AuthService {
 
   }
 
+  authenticatedUser(){
+    return this.userAuth;
+  }
+
 }
