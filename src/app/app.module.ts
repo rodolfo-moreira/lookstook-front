@@ -12,6 +12,8 @@ import { RegisterComponent } from './register/register.component';
 import { RegisterProductComponent } from './register-product/register-product.component';
 import { HomeComponent } from './home/home.component';
 import { rounting } from './app.rounting';
+import { AuthService } from './login/auth.service';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -26,10 +28,11 @@ import { rounting } from './app.rounting';
     HomeComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     rounting
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
