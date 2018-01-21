@@ -13,9 +13,10 @@ import { RegisterProductComponent } from './register-product/register-product.co
 import { HomeComponent } from './home/home.component';
 import { rounting } from './app.rounting';
 import { AuthService } from './login/auth.service';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthGuard } from './guards/auth.guard';
 import { ProductsComponent } from './products/products.component';
+import { HttpModule } from '@angular/http';
 
 
 @NgModule({
@@ -33,7 +34,9 @@ import { ProductsComponent } from './products/products.component';
   imports: [
     FormsModule,
     BrowserModule,
-    rounting
+    rounting,
+    HttpModule,
+    ReactiveFormsModule
   ],
   providers: [AuthService, AuthGuard],
   bootstrap: [AppComponent]
