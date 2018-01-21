@@ -5,18 +5,22 @@
         <span class="card-title">Login</span>
         <div class="row">
           <div class="input-field col s12">
-            <label for="email">E-mail</label>
+
+            <i class="material-icons prefix">mail</i>
             <input [(ngModel)]="user.name" type="email" class="validate" name="email" id="email" />
+            <label for="email">E-mail</label>
+
+            
           </div>
           <div class="input-field col s12">
-            <label for="password">Senha </label>
+              <i class="material-icons prefix">vpn_key</i>
             <input [(ngModel)]="user.password" type="password" class="validate" name="password" id="password" />
+            <label for="password">Senha </label>
           </div>
         </div>
       </div>
-      <div class="card-action right-align">
-        <input routerLink="/forgot" type="reset" id="reset" class="btn-flat grey-text waves-effect" value="Esqueceu a senha?">
-        <input type="submit" ng-keyup="$event.keyCode == 13" class="btn green waves-effect waves-light" value="Entrar" (click)="login()">
+      <div class="card-action center-align">
+        <input type="submit" class="btn green waves-effect waves-light" value="Entrar" (click)="login()">
       </div>
       </form>
   </div>
