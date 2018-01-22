@@ -39,7 +39,11 @@ export class RegisterProductComponent implements OnInit, OnDestroy {
         let product: Product = new Product(null,
         this.productForm.controls['title'].value,        
         this.productForm.controls['description'].value);
-        this.productsService.saveProduct(product).subscribe();
+        delete product.id;
+        let productString = JSON.stringify(product);
+        let productJson = JSON.parse(productString);
+        //console.log();
+        this.productsService.saveProduct(productJson).subscribe();
         //console.log(product);
 
     }

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import {Http, Response} from '@angular/http';
+import {Http, Response, Headers} from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 import { ProductsComponent } from './products.component';
 import { Product } from './Product';
@@ -15,13 +15,23 @@ export class ProductsService {
   constructor(private _http: Http) { }
 
   findAll():Observable<Product>{
-    return this._http.get(this._url)
+
+    let headers: Headers = new Headers();
+    headers.append("Authorization", "Basic " + btoa(localStorage.email + ":" + localStorage.password)); 
+    headers.append("Content-Type", "application/x-www-form-urlencoded");
+
+    return this._http.get(this._url, {headers} )
       .map((res:Response) => res.json())
       .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 
   saveProduct(product: Product):Observable<Product>{
-    return this._http.post(this._url, product)
+
+    let headers: Headers = new Headers();
+    headers.append("Authorization", "Basic " + btoa(localStorage.email + ":" + localStorage.password)); 
+    headers.append("Content-Type", "application/json");
+
+    return this._http.post(this._url, product, {headers})
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 

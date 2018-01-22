@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
       
       user => {
         this.user = user;
-        console.log('usuario e senhas corretos');
+        console.log('usuario e senhas corretos');       
 
         this.userAuth = true;
         localStorage.setItem('userAuth', 'true');
