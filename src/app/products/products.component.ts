@@ -16,6 +16,12 @@ export class ProductsComponent implements OnInit {
   constructor( private productService: ProductsService, private router: Router) { }
 
   ngOnInit() {
+    setTimeout(function() {
+        console.log('teste timeout');
+        document.getElementById("preloader").style.display = 'none';
+        document.getElementById("container").style.display = 'block';
+    }.bind(this), 1500);
+
     this.getAllProducts();
   }
 

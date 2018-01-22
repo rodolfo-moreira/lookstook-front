@@ -14,10 +14,15 @@ export class LoginComponent implements OnInit {
 
   private userAuth : boolean = false;
 
-
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
+
+    setTimeout(function() {
+        document.getElementById("preloader").style.display = 'none';
+        document.getElementById("container").style.display = 'block';
+    }.bind(this), 1500);
+
   }
 
   login(){
@@ -25,7 +30,9 @@ export class LoginComponent implements OnInit {
       
       user => {
         this.user = user;
-        console.log('usuario e senhas corretos');       
+        console.log('usuario e senhas corretos');     
+        
+        
 
         this.userAuth = true;
         localStorage.setItem('userAuth', 'true');

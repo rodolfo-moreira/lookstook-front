@@ -3,7 +3,6 @@ import { FormControl, FormGroup, Validators} from '@angular/forms';
 import { ProductsService } from '../products/products.service';
 import { Product } from '../products/Product';
 import { ActivatedRoute, Router } from '@angular/router';
-ActivatedRoute
 
 @Component({
   selector: 'app-register-product',
@@ -26,7 +25,12 @@ export class RegisterProductComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
 
-    this.sub = this.route.params.subscribe(params => {
+    setTimeout(function() {
+        document.getElementById("preloader").style.display = 'none';
+        document.getElementById("container").style.display = 'block';
+    }.bind(this), 1500);
+
+      this.sub = this.route.params.subscribe(params => {
       this.id = params['id'];
     });
 
