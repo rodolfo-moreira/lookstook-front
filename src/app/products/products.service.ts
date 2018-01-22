@@ -10,7 +10,8 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class ProductsService {
 
-  private _url = 'http://127.0.0.1:8000/products'
+  private _url = 'http://127.0.0.1:8000/products';
+  private sub: any;
 
   constructor(private _http: Http) { }
 
@@ -18,7 +19,8 @@ export class ProductsService {
 
     let headers: Headers = new Headers();
     headers.append("Authorization", "Basic " + btoa(localStorage.email + ":" + localStorage.password)); 
-    headers.append("Content-Type", "application/x-www-form-urlencoded");
+    headers.append("Content-Type", "application/json");
+    headers.append("Accept", "application/json");  
 
     return this._http.get(this._url, {headers} )
       .map((res:Response) => res.json())
@@ -30,9 +32,46 @@ export class ProductsService {
     let headers: Headers = new Headers();
     headers.append("Authorization", "Basic " + btoa(localStorage.email + ":" + localStorage.password)); 
     headers.append("Content-Type", "application/json");
+    headers.append("Accept", "application/json");
 
     return this._http.post(this._url, product, {headers})
     .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+  findById(id: number): Observable<Product> {
+
+    let headers: Headers = new Headers();
+    headers.append("Authorization", "Basic " + btoa(localStorage.email + ":" + localStorage.password)); 
+    headers.append("Content-Type", "application/json");
+    headers.append("Accept", "application/json");
+
+    return this._http.get(this._url + '/' + id, {headers})
+      .map((res:Response) => res.json())
+      .catch((error:any) => Observable.throw(error.json().error || 'Error'));
+  }
+
+  updateProduct(id: number, product: Product): Observable<Product> {
+
+    let headers: Headers = new Headers();
+    headers.append("Authorization", "Basic " + btoa(localStorage.email + ":" + localStorage.password)); 
+    headers.append("Content-Type", "application/json");
+    headers.append("Accept", "application/json");
+
+    return this._http.put(this._url + '/' + id, product, {headers})
+      .map((res:Response) => res.json())
+      .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
+  }
+
+  deleteProductById(id: number): Observable<boolean> {
+
+    let headers: Headers = new Headers();
+    headers.append("Authorization", "Basic " + btoa(localStorage.email + ":" + localStorage.password)); 
+    headers.append("Content-Type", "application/json");
+    headers.append("Accept", "application/json");
+
+    return this._http.delete(this._url + '/' + id, {headers})
+      .map((res:Response) => res.json())
+      .catch((error:any) => Observable.throw(error.json().error || 'Error'));
   }
 
 }

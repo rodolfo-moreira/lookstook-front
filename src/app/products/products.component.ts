@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from './Product';
 import { ProductsService } from './products.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -12,7 +13,7 @@ export class ProductsComponent implements OnInit {
 
   private products : Product;
 
-  constructor( private productService: ProductsService) { }
+  constructor( private productService: ProductsService, private router: Router) { }
 
   ngOnInit() {
     this.getAllProducts();
@@ -32,12 +33,21 @@ export class ProductsComponent implements OnInit {
   editProductPage(product: Product) {
     if (product) {
       console.log(product);
-      //this.router.navigate(['/user/edit', user.id]);
+      this.router.navigate(['/editProduct/', product.id]);
     }
   }
- 
+
+
   deleteProduct(product: Product) {
-    console.log('Delete product');
+    if (product) {
+      this.productService.deleteProductById(product.id).subscribe(
+        res => {
+          this.getAllProducts();
+          this.router.navigate(['/products']);
+          console.log('done');
+        }
+      );
+    }
   }
 
 

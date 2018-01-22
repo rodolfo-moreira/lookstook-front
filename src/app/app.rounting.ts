@@ -15,7 +15,8 @@ const APP_ROUTES: Routes = [
     { path: 'register', component: RegisterComponent},
     { path: 'forgot', component: ForgotComponent},
     { path: 'registerProduct', component: RegisterProductComponent, canActivate:[AuthGuard]},
-    { path: 'products', component: ProductsComponent, canActivate:[AuthGuard]}
+    { path: 'products', component: ProductsComponent, canActivate:[AuthGuard]},
+    { path: 'editProduct/:id', component: RegisterProductComponent, canActivate:[AuthGuard]},
 ];
 
 export const rounting: ModuleWithProviders = RouterModule.forRoot(APP_ROUTES);
