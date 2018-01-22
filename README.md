@@ -1,27 +1,20 @@
 # LoopstockFront
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.5.
+O Loopstock é um gerenciador pra o seu estoque para que você saia das planilhas do Excel e va para um sistema estruturado. O front esperar uma API local vinda do Laravel (http://127.0.0.0:8000), então é necessário fazer o clone do projeto em Laravel (loopstock-api) e instalar localmente na máquina, a url está nos arquivos de services dentro dos component´s caso seja necessário alterar.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## Instalação
 
-## Code scaffolding
+Para rodar a aplicação localmente:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Tenha o Angular-cli, e npm Instalados
 
-## Build
+Após fazer o clone do projeto do git
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+Rode o composer:
 
-## Running unit tests
+- npm install
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Rode a aplicação:
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+- ng serve
