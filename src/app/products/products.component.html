@@ -8,6 +8,7 @@
       <tr>
           <th>Título</th>
           <th>Descrição</th>
+          <th>Autor</th>
           <th>Editar</th>
           <th>Excluir</th>
       </tr>
@@ -17,6 +18,7 @@
       <tr *ngFor="let product of products">
         <td>{{product.title}}</td>
         <td>{{product.description}}</td>
+        <td>{{product.created_by[0].name}}</td>
         <td><a (click)="editProductPage(product)"><i class="material-icons">mode_edit</i></a></td>
         <td><a (click)="deleteProduct(product)"><i class="material-icons">delete</i></a></td>
       </tr>

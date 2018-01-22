@@ -30,10 +30,6 @@ export class LoginComponent implements OnInit {
       
       user => {
         this.user = user;
-        console.log('usuario e senhas corretos');     
-        
-        
-
         this.userAuth = true;
         localStorage.setItem('userAuth', 'true');
         this.router.navigate(['/']);
@@ -41,10 +37,10 @@ export class LoginComponent implements OnInit {
       },
       err => {
         console.log(err);
-        console.log('usuario e senha errados');
-
         this.userAuth = false;
         localStorage.setItem('userAuth', 'false');
+
+        alert('Credenciais inválidas');
 
       }
     );

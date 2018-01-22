@@ -11,7 +11,7 @@ import 'rxjs/add/operator/catch';
 @Injectable()
 export class AuthService {
 
-  private userAuth : boolean = false;
+  private userAuth : boolean = false;  
 
   private _url = 'http://127.0.0.1:8000/doLogin';
   private _url2 = 'http://127.0.0.1:8000/doLogout';

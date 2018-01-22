@@ -45,15 +45,18 @@ export class ProductsComponent implements OnInit {
 
 
   deleteProduct(product: Product) {
-    if (product) {
-      this.productService.deleteProductById(product.id).subscribe(
-        res => {
-          this.getAllProducts();
-          this.router.navigate(['/products']);
-          console.log('done');
-        }
-      );
-    }
+
+    if(confirm("Tem certeza que deseja excluir? ")) {
+      if (product) {
+        this.productService.deleteProductById(product.id).subscribe(
+          res => {
+            this.getAllProducts();
+            this.router.navigate(['/products']);
+            console.log('done');
+          }
+        );
+      }
+    }    
   }
 
 

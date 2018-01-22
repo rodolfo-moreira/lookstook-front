@@ -11,6 +11,7 @@ import 'rxjs/add/operator/catch';
 export class ProductsService {
 
   private _url = 'http://127.0.0.1:8000/products';
+  private _url2 = 'http://127.0.0.1:8000/lastProduct';
   private sub: any;
 
   constructor(private _http: Http) { }
@@ -72,6 +73,18 @@ export class ProductsService {
     return this._http.delete(this._url + '/' + id, {headers})
       .map((res:Response) => res.json())
       .catch((error:any) => Observable.throw(error.json().error || 'Error'));
+  }
+
+  lastProduct():Observable<Product>{
+
+    let headers: Headers = new Headers();
+    headers.append("Authorization", "Basic " + btoa(localStorage.email + ":" + localStorage.password)); 
+    headers.append("Content-Type", "application/json");
+    headers.append("Accept", "application/json");  
+
+    return this._http.get(this._url2, {headers} )
+      .map((res:Response) => res.json())
+      .catch((error:any) => Observable.throw(error.json().error || 'Server error'));
   }
 
 }

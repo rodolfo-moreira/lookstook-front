@@ -71,7 +71,17 @@ export class RegisterProductComponent implements OnInit, OnDestroy {
           delete product.id;
           let productString = JSON.stringify(product);
           let productJson = JSON.parse(productString);
-          this.productsService.updateProduct(this.id,productJson).subscribe();
+          let update = this.productsService.updateProduct(this.id,productJson).subscribe(response => {
+
+            console.log(response);
+
+            alert('Editado com sucesso');
+
+          }, error => {
+
+            alert('Você precisa ser o autor do item para exclui-lo');
+
+          });          
 
       }else{
 
@@ -81,7 +91,17 @@ export class RegisterProductComponent implements OnInit, OnDestroy {
           delete product.id;
           let productString = JSON.stringify(product);
           let productJson = JSON.parse(productString);
-          this.productsService.saveProduct(productJson).subscribe();
+          this.productsService.saveProduct(productJson).subscribe(response => {
+
+            console.log(response);
+
+            alert('Criado com sucesso');
+
+          }, error => {
+
+            alert('Erro na api, por favor tente mais tarde');
+
+          });        
 
       }
  

@@ -35,7 +35,10 @@ export class RegisterComponent implements OnInit {
 
     this.registerForm = new FormGroup({
       name: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
+      email: new FormControl('', [
+        Validators.required,
+        Validators.pattern("[^ @]*@[^ @]*")
+      ]),
       password: new FormControl('', Validators.required)
     });
 
@@ -53,7 +56,17 @@ export class RegisterComponent implements OnInit {
           
           let registerString = JSON.stringify(register);
           let registerJson = JSON.parse(registerString);
-          this.registerService.saveRegister(registerJson).subscribe();
+          this.registerService.saveRegister(registerJson).subscribe(response => {
+
+            console.log(response);
+
+            alert('Criado com sucesso, por favor efetue o login.');
+
+          }, error => {
+
+            alert('Erro na api, por favor tente mais tarde');
+
+          });
 
     }
       this.registerForm.reset();
